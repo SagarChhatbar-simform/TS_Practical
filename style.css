@@ -1,0 +1,127 @@
+*{
+	max-width:100%;
+	margin:0;
+	padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+ .container{
+
+	max-width: 1272px;
+	margin: 0 auto;
+   } 
+
+   body{
+    background-color: #e8e8e8;
+   }
+.top-div{
+    justify-content: center;
+display: flex;
+
+}
+
+.main-div{
+    width: 28%;
+    height: 68vh;
+    margin-top: 50px;
+    box-shadow: 3px 9px 20px #888;
+}
+.parent a{
+    padding: 14px;
+    cursor: pointer;
+    font-size: 15px;
+    opacity: 0.6;
+}
+.parent-div{
+    display: flex;
+
+}
+
+.parent a:hover {
+    opacity: 2;
+}
+
+.input{
+    justify-content: center;
+display: flex;
+}
+.inpt-txt{
+    text-align: end;
+font-size: 45px;
+font-weight: bold;
+border: none;
+}
+
+
+
+.parent-div button {
+    width: 20%;
+    background-color: white;
+    height: 44px;
+    border: 1px #d9d9d9 solid;
+    cursor: pointer;
+    font-size: large;
+
+}
+
+.parent-div button:hover{
+    background-color: #b9b9b9;
+}
+
+.btn-parent {
+    height: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.parent-div a {
+    font-size: 15px;
+    cursor: pointer;
+
+    border: 1px #b9b9b9 solid;
+    height: 30px;
+    align-items: center;
+display: flex;
+}
+
+.dropbtn {
+
+    cursor: pointer;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+  
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    overflow: scroll;
+height: 156px;
+  }
+
+  .dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    border:1px solid;
+  }
+  
+  .dropdown-content a:hover {background-color: #bbbbbb}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  
