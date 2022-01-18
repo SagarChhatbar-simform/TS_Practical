@@ -1,31 +1,36 @@
-var scrn = <HTMLInputElement>document.getElementById("display");
+var displ = <HTMLInputElement>document.getElementById("display");
 
-function evalu():void {
- scrn.value = eval(scrn.value);
+function evalu(): void {
+    displ.value = eval(displ.value);
 }
 
-function deleteChar():void {
-    scrn.value = scrn.value.substring(0, scrn.value.length - 1)
+function deleteChar(): void {
+    displ.value = displ.value.substring(0, displ.value.length - 1)
 }
 
-function fe():void {
-    scrn.value = Number(scrn.value).toExponential();
+function fe(): void {
+    displ.value = Number(displ.value).toExponential();
 }
 
-function exp():void {
-    scrn.value = String(Math.exp(Number(scrn.value)));
+function exp(): void {
+    displ.value = String(Math.exp(Number(displ.value)));
 }
-function factorial():void {
-    var i:number, n:number, j:number;
+
+
+function factorial(): void {
+    var i: number, n: number, j: number;
     j = 1;
-    n = Number(scrn.value);
+    n = Number(displ.value);
     for (i = 1; i <= n; i++) {
         j = j * i;
     }
     i = i - 1;
-    scrn.value = String(j);
+    displ.value = String(j);
 }
-function restrictAlphabets(e:any):boolean {
+
+
+
+function restrictAlphabets(e: any): boolean {
     var x = e.which || e.keycode;
     if ((x >= 48 && x <= 57))
         return true;
@@ -34,26 +39,24 @@ function restrictAlphabets(e:any):boolean {
 }
 var memvalue = [];
 
-function memory(id:String):void {
+function memory(id: String): void {
 
     switch (id) {
         case "MS":
-            memvalue.unshift(Number(scrn.value));
+            memvalue.unshift(Number(displ.value));
             break;
         case "MC":
             memvalue = [];
             break;
         case "M+":
-            if (memvalue[0])
-                scrn.value = Number(scrn.value) + memvalue[0];
+            displ.value = Number(displ.value) + memvalue[0];
             break;
         case "M-":
-            if (memvalue[0])
-                scrn.value = String(memvalue[0] - Number(scrn.value));
+            displ.value = String(memvalue[0] - Number(displ.value));
             break;
         case "MR":
             if (memvalue[0])
-                scrn.value += memvalue[0];
+                displ.value += memvalue[0];
             break;
     }
     var mem = (<HTMLInputElement>document.getElementById("memory"));
@@ -62,7 +65,7 @@ function memory(id:String):void {
 
 var togglev = true;
 
-function update():void {
+function update(): void {
 
     if (togglev) {
         var x2 = (<HTMLInputElement>document.getElementById("x2"));
@@ -71,19 +74,19 @@ function update():void {
 
         var x3 = (<HTMLInputElement>document.getElementById("sqrt"));
 
-        x3.innerText = "3√x"; 
+        x3.innerText = "3√x";
 
         var yx = (<HTMLInputElement>document.getElementById("xraisey"));
 
-        yx.innerText = "y√x"; 
+        yx.innerText = "y√x";
 
         var x10 = (<HTMLInputElement>document.getElementById("10x"));
 
-        x10.innerText = "2^x"; 
+        x10.innerText = "2^x";
 
         var log = (<HTMLInputElement>document.getElementById("log"));
 
-        log.innerText = "logyx"; 
+        log.innerText = "logyx";
 
         var logn = (<HTMLInputElement>document.getElementById("logn"));
 
@@ -106,19 +109,19 @@ function update():void {
 
         var x3 = (<HTMLInputElement>document.getElementById("sqrt"));
 
-        x3.innerText = "2√x"; 
+        x3.innerText = "2√x";
 
         var yx = (<HTMLInputElement>document.getElementById("xraisey"));
 
-        yx.innerText = "x^y"; 
+        yx.innerText = "x^y";
 
         var x10 = (<HTMLInputElement>document.getElementById("10x"));
 
-        x10.innerText = "10^x"; 
+        x10.innerText = "10^x";
 
         var log = (<HTMLInputElement>document.getElementById("log"));
 
-        log.innerText = "log"; 
+        log.innerText = "log";
 
         var logn = (<HTMLInputElement>document.getElementById("logn"));
 
@@ -134,64 +137,64 @@ function update():void {
     }
 }
 
-function power():void {
+function power(): void {
     if (togglev) {
-        scrn.value = String(Math.pow(Number(scrn.value), 2));
+        displ.value = String(Math.pow(Number(displ.value), 2));
     }
     else {
-        scrn.value = String(Math.pow(Number(scrn.value), 3));
+        displ.value = String(Math.pow(Number(displ.value), 3));
 
     }
 }
-function root():void {
+function root(): void {
     if (togglev) {
-        scrn.value = eval(String(Math.sqrt(Number(scrn.value)) * 2));
+        displ.value = eval(String(Math.sqrt(Number(displ.value)) * 2));
     }
     else {
-        scrn.value = eval(String(Math.sqrt(Number(scrn.value)) * 3));
+        displ.value = eval(String(Math.sqrt(Number(displ.value)) * 3));
     }
 }
 
-function ex():void {
+function ex(): void {
     if (togglev) {
-        scrn.value += '**'
+        displ.value += '**'
     }
     else {
-        scrn.value += '**'
+        displ.value += '**'
     }
 }
 
-function x10():void {
+function x10(): void {
     if (togglev) {
-        scrn.value = String(Math.pow(10, Number(scrn.value)));
+        displ.value = String(Math.pow(10, Number(displ.value)));
     }
     else {
-        scrn.value = String(Math.pow(2, Number(scrn.value)));
+        displ.value = String(Math.pow(2, Number(displ.value)));
     }
 }
 
-function loge():void {
+function loge(): void {
     if (togglev) {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log10(Number(displ.value)));
     }
     else {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log10(Number(displ.value)));
     }
 }
 
-function nlog():void {
+function nlog(): void {
     if (togglev) {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log2(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String(2.718281828 ** Number(scrn.value)));
+        displ.value = eval(String(2.718281828 ** Number(displ.value)));
     }
 }
 
 
 var radtodeg = true;
 
-function deg():void {
+function deg(): void {
     if (radtodeg) {
         var chg = (<HTMLInputElement>document.getElementById("change"));
         chg.innerText = "DEG";
@@ -209,37 +212,37 @@ function deg():void {
     }
 }
 
-function sine():void {
+function sine(): void {
     if (radtodeg) {
-        scrn.value = String(Math.sin(Number(scrn.value)));
+        displ.value = String(Math.sin(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
-        scrn.value = String(Math.sin(Number(scrn.value)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
+        displ.value = String(Math.sin(Number(displ.value)));
     }
 }
 
-function cosec():void {
+function cosec(): void {
     if (radtodeg) {
-        scrn.value = String(Math.cos(Number(scrn.value)));
+        displ.value = String(Math.cos(Number(displ.value)));
 
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
 
-        scrn.value = String(Math.cos(Number(scrn.value)));
+        displ.value = String(Math.cos(Number(displ.value)));
 
     }
 }
-function tane():void {
+function tane(): void {
     if (radtodeg) {
-        scrn.value = String(Math.tan(Number(scrn.value)));
+        displ.value = String(Math.tan(Number(displ.value)));
 
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
 
-        scrn.value = String(Math.tan(Number(scrn.value)));
+        displ.value = String(Math.tan(Number(displ.value)));
 
     }
 }

@@ -1,26 +1,30 @@
-var scrn = document.getElementById("display");
+var displ = document.getElementById("display");
 function evalu() {
-    scrn.value = eval(scrn.value);
+    displ.value = eval(displ.value);
 }
 function deleteChar() {
-    scrn.value = scrn.value.substring(0, scrn.value.length - 1);
+    displ.value = displ.value.substring(0, displ.value.length - 1);
 }
 function fe() {
-    scrn.value = Number(scrn.value).toExponential();
+    displ.value = Number(displ.value).toExponential();
 }
 function exp() {
-    scrn.value = String(Math.exp(Number(scrn.value)));
+    displ.value = String(Math.exp(Number(displ.value)));
 }
+
+
 function factorial() {
     var i, n, j;
     j = 1;
-    n = Number(scrn.value);
+    n = Number(displ.value);
     for (i = 1; i <= n; i++) {
         j = j * i;
     }
     i = i - 1;
-    scrn.value = String(j);
+    displ.value = String(j);
 }
+
+
 function restrictAlphabets(e) {
     var x = e.which || e.keycode;
     if ((x >= 48 && x <= 57))
@@ -32,22 +36,20 @@ var memvalue = [];
 function memory(id) {
     switch (id) {
         case "MS":
-            memvalue.unshift(Number(scrn.value));
+            memvalue.unshift(Number(displ.value));
             break;
         case "MC":
             memvalue = [];
             break;
         case "M+":
-            if (memvalue[0])
-                scrn.value = Number(scrn.value) + memvalue[0];
+            displ.value = Number(displ.value) + memvalue[0];
             break;
         case "M-":
-            if (memvalue[0])
-                scrn.value = String(memvalue[0] - Number(scrn.value));
+            displ.value = String(memvalue[0] - Number(displ.value));
             break;
         case "MR":
             if (memvalue[0])
-                scrn.value += memvalue[0];
+                displ.value += memvalue[0];
             break;
     }
     var mem = document.getElementById("memory");
@@ -94,50 +96,50 @@ function update() {
 }
 function power() {
     if (togglev) {
-        scrn.value = String(Math.pow(Number(scrn.value), 2));
+        displ.value = String(Math.pow(Number(displ.value), 2));
     }
     else {
-        scrn.value = String(Math.pow(Number(scrn.value), 3));
+        displ.value = String(Math.pow(Number(displ.value), 3));
     }
 }
 function root() {
     if (togglev) {
-        scrn.value = eval(String(Math.sqrt(Number(scrn.value)) * 2));
+        displ.value = eval(String(Math.sqrt(Number(displ.value)) * 2));
     }
     else {
-        scrn.value = eval(String(Math.sqrt(Number(scrn.value)) * 3));
+        displ.value = eval(String(Math.sqrt(Number(displ.value)) * 3));
     }
 }
 function ex() {
     if (togglev) {
-        scrn.value += '**';
+        displ.value += '**';
     }
     else {
-        scrn.value += '**';
+        displ.value += '**';
     }
 }
 function x10() {
     if (togglev) {
-        scrn.value = String(Math.pow(10, Number(scrn.value)));
+        displ.value = String(Math.pow(10, Number(displ.value)));
     }
     else {
-        scrn.value = String(Math.pow(2, Number(scrn.value)));
+        displ.value = String(Math.pow(2, Number(displ.value)));
     }
 }
 function loge() {
     if (togglev) {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log10(Number(displ.value)));
     }
     else {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log10(Number(displ.value)));
     }
 }
 function nlog() {
     if (togglev) {
-        scrn.value = String(Math.log(Number(scrn.value)));
+        displ.value = String(Math.log2(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String(Math.pow(2.718281828, Number(scrn.value))));
+        displ.value = eval(String(Math.pow(2.718281828, Number(displ.value))));
     }
 }
 var radtodeg = true;
@@ -159,28 +161,28 @@ function deg() {
 }
 function sine() {
     if (radtodeg) {
-        scrn.value = String(Math.sin(Number(scrn.value)));
+        displ.value = String(Math.sin(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
-        scrn.value = String(Math.sin(Number(scrn.value)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
+        displ.value = String(Math.sin(Number(displ.value)));
     }
 }
 function cosec() {
     if (radtodeg) {
-        scrn.value = String(Math.cos(Number(scrn.value)));
+        displ.value = String(Math.cos(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
-        scrn.value = String(Math.cos(Number(scrn.value)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
+        displ.value = String(Math.cos(Number(displ.value)));
     }
 }
 function tane() {
     if (radtodeg) {
-        scrn.value = String(Math.tan(Number(scrn.value)));
+        displ.value = String(Math.tan(Number(displ.value)));
     }
     else {
-        scrn.value = eval(String((Number(scrn.value)) * (Math.PI / 180)));
-        scrn.value = String(Math.tan(Number(scrn.value)));
+        displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
+        displ.value = String(Math.tan(Number(displ.value)));
     }
 }
