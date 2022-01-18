@@ -1,7 +1,7 @@
 var displ = <HTMLInputElement>document.getElementById("display");
 
 function evalu(): void {
-    displ.value = eval(displ.value);
+    displ.value = eval(displ.value).toFixed(2);
 }
 
 function deleteChar(): void {
@@ -16,19 +16,19 @@ function exp(): void {
     displ.value = String(Math.exp(Number(displ.value)));
 }
 
-
-function factorial(): void {
-    var i: number, n: number, j: number;
-    j = 1;
-    n = Number(displ.value);
-    for (i = 1; i <= n; i++) {
-        j = j * i;
-    }
-    i = i - 1;
-    displ.value = String(j);
+function fact(x)
+  {
+if (x === 0)
+ {
+    return 1;
+ }
+ return x * fact(x-1);
 }
 
-
+function factorial(x) 
+{ 
+    displ.value = fact(x);
+}
 
 function restrictAlphabets(e: any): boolean {
     var x = e.which || e.keycode;
@@ -37,30 +37,30 @@ function restrictAlphabets(e: any): boolean {
     else
         return false;
 }
-var memvalue = [];
+var memvalue;
 
 function memory(id: String): void {
 
-    switch (id) {
-        case "MS":
-            memvalue.unshift(Number(displ.value));
-            break;
-        case "MC":
-            memvalue = [];
-            break;
-        case "M+":
-            displ.value = Number(displ.value) + memvalue[0];
-            break;
-        case "M-":
-            displ.value = String(memvalue[0] - Number(displ.value));
-            break;
-        case "MR":
-            if (memvalue[0])
-                displ.value += memvalue[0];
-            break;
+    if(id=='MS'){
+        memvalue = Number(displ.value);
     }
+    else if(id=='MC'){
+        memvalue = 0;
+    }
+    else if(id=='M+'){
+        displ.value = Number(displ.value) + memvalue;
+    }
+    else if(id=='M-'){
+        displ.value = String(memvalue - Number(displ.value));
+    }
+    else if(id=='MR'){
+        if (memvalue)
+            displ.value += memvalue;
+    }
+
     var mem = (<HTMLInputElement>document.getElementById("memory"));
-    mem.innerHTML = (memvalue.length === 0 ? "empty memory" : memvalue[0]);
+    mem.innerHTML = (memvalue === 0 ? "No Stored Value in Memory " : memvalue);
+
 }
 
 var togglev = true;
@@ -243,6 +243,5 @@ function tane(): void {
         displ.value = eval(String((Number(displ.value)) * (Math.PI / 180)));
 
         displ.value = String(Math.tan(Number(displ.value)));
-
     }
 }

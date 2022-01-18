@@ -1,6 +1,6 @@
 var displ = document.getElementById("display");
 function evalu() {
-    displ.value = eval(displ.value);
+    displ.value = eval(displ.value).toFixed(2);
 }
 function deleteChar() {
     displ.value = displ.value.substring(0, displ.value.length - 1);
@@ -11,20 +11,15 @@ function fe() {
 function exp() {
     displ.value = String(Math.exp(Number(displ.value)));
 }
-
-
-function factorial() {
-    var i, n, j;
-    j = 1;
-    n = Number(displ.value);
-    for (i = 1; i <= n; i++) {
-        j = j * i;
+function fact(x) {
+    if (x === 0) {
+        return 1;
     }
-    i = i - 1;
-    displ.value = String(j);
+    return x * fact(x - 1);
 }
-
-
+function factorial(x) {
+    displ.value = fact(x);
+}
 function restrictAlphabets(e) {
     var x = e.which || e.keycode;
     if ((x >= 48 && x <= 57))
@@ -32,28 +27,26 @@ function restrictAlphabets(e) {
     else
         return false;
 }
-var memvalue = [];
+var memvalue;
 function memory(id) {
-    switch (id) {
-        case "MS":
-            memvalue.unshift(Number(displ.value));
-            break;
-        case "MC":
-            memvalue = [];
-            break;
-        case "M+":
-            displ.value = Number(displ.value) + memvalue[0];
-            break;
-        case "M-":
-            displ.value = String(memvalue[0] - Number(displ.value));
-            break;
-        case "MR":
-            if (memvalue[0])
-                displ.value += memvalue[0];
-            break;
+    if (id == 'MS') {
+        memvalue = Number(displ.value);
+    }
+    else if (id == 'MC') {
+        memvalue = 0;
+    }
+    else if (id == 'M+') {
+        displ.value = Number(displ.value) + memvalue;
+    }
+    else if (id == 'M-') {
+        displ.value = String(memvalue - Number(displ.value));
+    }
+    else if (id == 'MR') {
+        if (memvalue)
+            displ.value += memvalue;
     }
     var mem = document.getElementById("memory");
-    mem.innerHTML = (memvalue.length === 0 ? "empty memory" : memvalue[0]);
+    mem.innerHTML = (memvalue === 0 ? "No Stored Value in Memory " : memvalue);
 }
 var togglev = true;
 function update() {
