@@ -16,7 +16,7 @@ function exp(): void {
     displ.value = String(Math.exp(Number(displ.value)));
 }
 
-function fact(x)
+function fact(x:number):number
   {
 if (x === 0)
  {
@@ -25,9 +25,9 @@ if (x === 0)
  return x * fact(x-1);
 }
 
-function factorial(x) 
+function factorial(x:number):void 
 { 
-    displ.value = fact(x);
+    displ.value = String(fact(x));
 }
 
 function restrictAlphabets(e: any): boolean {
@@ -37,7 +37,7 @@ function restrictAlphabets(e: any): boolean {
     else
         return false;
 }
-var memvalue;
+var memvalue: number;
 
 function memory(id: String): void {
 
@@ -48,10 +48,10 @@ function memory(id: String): void {
         memvalue = 0;
     }
     else if(id=='M+'){
-        displ.value = Number(displ.value) + memvalue;
+        displ.value = String(Number(displ.value) + Number(memvalue));
     }
     else if(id=='M-'){
-        displ.value = String(memvalue - Number(displ.value));
+        displ.value = String(Number(displ.value)- Number(memvalue) );
     }
     else if(id=='MR'){
         if (memvalue)
@@ -59,11 +59,11 @@ function memory(id: String): void {
     }
 
     var mem = (<HTMLInputElement>document.getElementById("memory"));
-    mem.innerHTML = (memvalue === 0 ? "No Stored Value in Memory " : memvalue);
+    mem.innerHTML = String(memvalue === 0 ? "No Stored Value in Memory " : memvalue);
 
 }
 
-var togglev = true;
+var togglev:boolean = true;
 
 function update(): void {
 
@@ -192,7 +192,7 @@ function nlog(): void {
 }
 
 
-var radtodeg = true;
+var radtodeg:boolean = true;
 
 function deg(): void {
     if (radtodeg) {

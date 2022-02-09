@@ -18,7 +18,7 @@ function fact(x) {
     return x * fact(x - 1);
 }
 function factorial(x) {
-    displ.value = fact(x);
+    displ.value = String(fact(x));
 }
 function restrictAlphabets(e) {
     var x = e.which || e.keycode;
@@ -36,17 +36,17 @@ function memory(id) {
         memvalue = 0;
     }
     else if (id == 'M+') {
-        displ.value = Number(displ.value) + memvalue;
+        displ.value = String(Number(displ.value) + Number(memvalue));
     }
     else if (id == 'M-') {
-        displ.value = String(memvalue - Number(displ.value));
+        displ.value = String(Number(displ.value) - Number(memvalue));
     }
     else if (id == 'MR') {
         if (memvalue)
             displ.value += memvalue;
     }
     var mem = document.getElementById("memory");
-    mem.innerHTML = (memvalue === 0 ? "No Stored Value in Memory " : memvalue);
+    mem.innerHTML = String(memvalue === 0 ? "No Stored Value in Memory " : memvalue);
 }
 var togglev = true;
 function update() {
